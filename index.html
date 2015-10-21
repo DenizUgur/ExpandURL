@@ -43,9 +43,9 @@ SOFTWARE.
         <div class="input-area">
             <div class="input-field col s6 e">
                 <input id="url" type="url" class="validate">
-                <label for="url" data-error="Invalidated format" data-success="Success">URL of the Website</label>
+                <label for="url" data-error="Invalid format" data-success="Success">URL of the Website</label>
             </div>
-            <button class="btn waves-effect waves-light" type="submit" name="action" onclick="Materialize.toast('Hello!', 3000, 'rounded')">Submit
+            <button class="btn waves-effect waves-light" type="submit" name="action" id="submit">Submit
                 <i class="material-icons right">send</i>
             </button>
         </div>
@@ -57,6 +57,7 @@ SOFTWARE.
             </label>
         </div>
     </div>
+    <div id="results"></div>
 </body>
 
 </html>
