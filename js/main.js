@@ -1,15 +1,14 @@
 $(document).ready(function () {
     console.log("ready!");
-    
-    $.ajax({
-        url: "result.html",
-        dataType: "html"
-    }).done(function (responseHtml) {
-        $("#results").html(responseHtml);
-    });
 
     $("#submit").click(function () {
-        Materialize.toast('Hello!', 3000, 'rounded');
+        $.ajax({
+            url: "result.html",
+            dataType: "html"
+        }).done(function (responseHtml) {
+            $("#results").html(responseHtml);
+            Materialize.toast('Recieved!', 3000, 'rounded');
+        });
 
         var parent = $(".parent-element");
         var position = parent.position();
