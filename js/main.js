@@ -2,45 +2,82 @@ $(document).ready(function () {
     console.log("ready!");
 
     $("#submit").click(function () {
-        $.ajax({
-            url: "result.html",
-            dataType: "html"
-        }).done(function (responseHtml) {
-            $("#results").html(responseHtml);
-            Materialize.toast('Recieved!', 3000, 'rounded');
-        });
-
-        var parent = $(".parent-element");
-        var position = parent.position();
-        var right = position.left + parent.width();
-        Materialize.toast("left: " + position.left + ", right: " + right, 3000, 'rounded');
-
         $("#results").empty();
         $.ajax({
             url: "result.html",
             dataType: "html"
         }).done(function (responseHtml) {
             $("#results").html(responseHtml);
-            $("#hr-sitemap").animate({
-                width: "+=560"
-            }, 500, function () {
-                // Animation complete.
-                Materialize.toast('Completed', 3000, 'rounded');
-            });
-            $(".chip-section").animate({
-                width: "+=560"
-            }, 500, function () {
-                // Animation complete.
-                Materialize.toast('Completed2', 3000, 'rounded');
-            });
-            $("#result-head-robots").hide('slow', function () {
-                $("#result-head-robots").remove();
-            });
-            $("#results").css({
-                left: position.left,
-                width: right,
-                position: 'absolute'
-            });
+            var t = document.getElementById("lever").checked;
+            JQUI();
+            if (t) {
+                finalResult();
+            }
         });
     });
+
+    function finalResult() {
+        $("#result-head-robots").hide('slow', function () {
+            $("#result-head-robots").remove();
+        });
+        $("#result-head-sitemap").position({
+            of: $("#parent-element"),
+            my: "center top",
+            at: "center bottom",
+            using: function (pos) {
+                $(this).animate(pos, "slow", function () {
+                    $("#result-head-sitemap").position({
+                        of: $("#parent-element"),
+                        my: "left top",
+                        at: "left bottom",
+                        using: function (pos) {
+                            $(this).animate(pos, "fast", function () {
+                                var w = $("#parent-element").width();
+                                $("#hr-sitemap").animate({
+                                    width: "+=" + (w / 3) * 2 + "px"
+                                }, 400, "easeOutBounce", function () {
+                                    $(".chip-section").position({
+                                        of: $("#result-head-sitemap"),
+                                        my: "center bottom",
+                                        at: "center bottom",
+                                        using: function (pos) {
+                                            $(this).animate(pos, "fast", function () {
+                                                $("#result-head-sitemap").position({
+                                                    of: $("#parent-element"),
+                                                    my: "center top",
+                                                    at: "center bottom",
+                                                    using: function (pos) {
+                                                        $(this).animate(pos, "fast");
+                                                    }
+                                                });
+                                            });
+                                        }
+                                    });
+                                });
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    }
+
+    function JQUI() {
+        $("#result-head-sitemap").position({
+            of: $("#parent-element"),
+            my: "left top",
+            at: "left bottom",
+            using: function (pos) {
+                $(this).animate(pos, "slow");
+            }
+        });
+        $("#result-head-robots").position({
+            of: $("#parent-element"),
+            my: "right top",
+            at: "right bottom",
+            using: function (pos) {
+                $(this).animate(pos, "slow");
+            }
+        });
+    }
 });

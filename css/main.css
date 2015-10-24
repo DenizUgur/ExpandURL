@@ -32,16 +32,9 @@ body {
     transform: translateY(-50%);
 }
 
+.result-robots,
 .result-sitemap {
     position: absolute;
-    left: 380;
-    top: 430;
-}
-
-.result-robots {
-    position: absolute;
-    left: 840;
-    top: 430;
 }
 
 .result-head {

@@ -29,13 +29,15 @@ SOFTWARE.
     <script src="js/materialize.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/jquery.scrollfire.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" href="css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 </head>
 
 <body>
-    <div class="parent-element">
+    <div class="parent-element" id="parent-element">
         <div class="e title">
             <div class="hit-the-floor">ExpandURL</div>
             <div class="desc">Gathers URLs directories from <i>robots.txt</i> and <i>sitemap.xml</i></div>
@@ -52,7 +54,7 @@ SOFTWARE.
         <div class="switch e">
             <label>
                 Display disallowed directories?
-                <input id="test" type="checkbox">
+                <input id="lever" type="checkbox">
                 <span class="lever"></span>
             </label>
         </div>
