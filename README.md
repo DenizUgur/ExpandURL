@@ -1,4 +1,6 @@
 # ExpandURL
+[![Status](https://img.shields.io/badge/status-discontinued-red.svg?style=flat)](#)
+
 Gathers URLs directories from **robots.txt** and **sitemap.xml**
 
 ```
